@@ -38,7 +38,7 @@ class VideoTableViewCell: UITableViewCell {
            // Set the title
         self.title.text = video?.snippet?.title
            
-        self.date.text = convertToString(dateString: video?.snippet?.publishedAt! ?? "")
+        self.date.text = Helpers.convertToString(dateString: video?.snippet?.publishedAt! ?? "")
     
            
            // Set the thumbnail
@@ -93,16 +93,6 @@ class VideoTableViewCell: UITableViewCell {
         
         
     }
-    func convertToString (dateString: String) -> String {
 
-        let dateFormatterGet = DateFormatter()
-        dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-
-        let dateFormatterPrint = DateFormatter()
-        dateFormatterPrint.dateFormat = "EEEE, MMM d, yyyy"
-
-        let date: NSDate? = dateFormatterGet.date(from: dateString) as NSDate?
-        return dateFormatterPrint.string(from: date! as Date)
-    }
     
 }

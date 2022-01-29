@@ -46,6 +46,20 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         return cell
     }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard tableView.indexPathForSelectedRow != nil else {
+                 return
+             }
+        
+        let selectedVideo = items[tableView.indexPathForSelectedRow!.row]
+        
+        let destination = segue.destination as! DetailViewController
+        
+        destination.video = selectedVideo
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
